@@ -43,7 +43,7 @@ stack.push(2);
 stack.push(3);
 stack.pop();
 stack.pop();
-//console.log(stack.getMin());
+console.log(stack.getMin());
 
 
 
