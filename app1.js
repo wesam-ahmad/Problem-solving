@@ -50,56 +50,60 @@ console.log(stack.getMin());
 
 
 
+// Q2
 
+ function reverseQueue(queue) {
+    const stack = [];
+    while (queue.length > 0) {
+      stack.push(queue.shift());
+    }
+    while (stack.length > 0) {
+      queue.push(stack.pop());
+    }
+    return queue;
+  }
+
+
+  const queue = [1, 2, 3, 4, 5];
+reverseQueue(queue);
+console.log(queue); // [5, 4, 3, 2, 1]
+
+
+
+//Q3
 
 class Queue {
     constructor() {
-      this.elements = [];
-      this.head = 0;
-      this.tail = 0;
+      this.s1 = [];
+      this.s2 = [];
     }
-    enqueue(element) {
-      this.elements[this.tail] = element;
-      this.tail++;
+
+    enqueue(val) {
+      this.s1.push(val);
     }
+
     dequeue() {
-      const item = this.elements[this.head];
-      delete this.elements[this.head];
-      this.head++;
-      return item;
-    }
-    queue_reverse() {
-   
-        this.elements = this.elements.reverse();
- 
-    }
-    peek() {
-      return this.elements[this.head];
-    }
-    get length() {
-      return this.tail - this.head;
-    }
-    get isEmpty() {
-      return this.length === 0;
+      if (this.s2.length === 0) {
+        while (this.s1.length > 0) {
+          this.s2.push(this.s1.pop());
+        }
+      }
+      if (this.s2.length === 0) {
+        return null; // or throw an error
+      }
+      return this.s2.pop();
     }
   }
 
-  let queue = new Queue();
-  queue.enqueue(1);
-  queue.enqueue(2);
-  queue.enqueue(3);
-  queue.dequeue();
-  queue.enqueue(4);
-  queue.enqueue(5);
-  queue.enqueue(6);
-  queue.enqueue(7);
-  queue.enqueue(8);
-  console.log(queue.peek());
-  console.log(queue.elements);
 
-  queue.queue_reverse();
-  console.log(queue.elements);
-  console.log(queue.peek());
+  const q = new Queue();
+q.enqueue(1);
+q.enqueue(2);
+q.enqueue(3);
+console.log(q.dequeue()); // 1
+console.log(q.dequeue()); // 2
+console.log(q.dequeue()); // 3
+console.log(q.dequeue()); // null
 
 
 
