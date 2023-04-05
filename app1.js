@@ -190,7 +190,7 @@ class ListNode {
 
 }
 
-class LinkedList {
+class LinkedList1 {
   constructor(head = null) {
       this.head = head;
   }
@@ -198,27 +198,27 @@ class LinkedList {
 
 
   reverse(node1) {
-      var prev = null;
-      var current = node1;
+      var prev1 = null;
+      var current1 = node1;
       var next = null;
-      while (current != null) {
-          next = current.next;
-          current.next = prev;
-          prev = current;
-          current = next;
+      while (current1 != null) {
+          next = current1.next;
+          current1.next = prev1;
+          prev1 = current1;
+          current1 = next;
       }
-      node1 = prev;
+      node1 = prev1;
       return node1;
   }
 }
-let node1 = new LinkedList(1);
-let node2 = new LinkedList(2);
-let node3 = new LinkedList(3);
+let node1 = new LinkedList1(1);
+let node2 = new LinkedList1(2);
+let node3 = new LinkedList1(3);
 
 node1.next = node2;
 node2.next = node3;
 
-let list = new LinkedList(node1);
+let list = new LinkedList1(node1);
 
 console.log(list);
 
